@@ -1,39 +1,28 @@
 <div class="container">
-    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+     <footer class=" border-top d-flex p-2 bd-highlight justify-content-center "> <!-- pt-4 my-md-5 pt-md-5 -->
         <div class="row">
         <div class="col-12 col-md">
-        <img src="<?= URL; ?>public/Assets/images/logo.png" width="40" alt="logo du site" />
-            <small class="d-block mb-3 text-muted">&copy; 2017–2021</small>
+        <img src="<?= URL; ?>public/Assets/images/MyToToolLogo" width="40" alt="logo du site" />
+            <small class="">&copy;MyToTool - 2023</small>
         </div>
-        <div class="col-6 col-md">
-            <h5>Features</h5>
+        <!-- <div class="col-6 col-md">
+            <h5>Title</h5>
             <ul class="list-unstyled text-small">
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">element</a></li>
             </ul>
         </div>
         <div class="col-6 col-md">
-            <h5>Resources</h5>
+            <h5>Title</h5>
             <ul class="list-unstyled text-small">
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">element</a></li>
             </ul>
         </div>
         <div class="col-6 col-md">
-            <h5>About</h5>
+            <h5>Title</h5>
             <ul class="list-unstyled text-small">
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">element</a></li>
             </ul>
-        </div>
+        </div> -->
         </div>
     </footer>
 </div>
