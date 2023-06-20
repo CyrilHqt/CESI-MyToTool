@@ -23,17 +23,26 @@
     if (isset($_SESSION['user'])){
         $todolists = getList();
     ?>
+<!--Ajout de la liste-->
     <div id="task-container">
         <div class="original-container">
         <form method="post">
             <input name="title" type="text" id="task-input" placeholder="Ajouter une liste de tâches">
             <button id="add-task-btn">Ajouter</button>
+        <form>
             <ul id="task-list">
                 <?php foreach($todolists as $todolist) { ?>
                     <li>
-                        <a href="index.php?page=todolist&id=<?php echo $todolist['id']?>" ><?php echo $todolist["title"]?></a>
+                    <a href="index.php?page=todolist&id=<?php echo $todolist['id']?>" ><?php echo $todolist["title"]?></a>
                     </li>
-                <?php } ?>
+<!--Suppression de la liste-->
+                        <form action="" method="POST">
+                                <input type="hidden" name="idTodolist" value="<?= $todolist['id'] ?>" />
+                                <input type="hidden" name="type" value="suppression" />
+                                <input type="submit" value="Supprimer" class="btn btn-outline-danger" />
+                        </form>
+
+                    <?php } ?>
             </ul>
         </div>
 

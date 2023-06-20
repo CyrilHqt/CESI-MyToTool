@@ -29,7 +29,8 @@ require 'request/todo.dao.php';
     <title>MyToTool</title>
 </head>
 <body>
-    
+
+<!--Ajout d'une tache-->
     <div id="task-container">
         <div class="original-container">
         <form method="post">
@@ -44,7 +45,7 @@ require 'request/todo.dao.php';
                     <?php } else { ?>
                     <li><?php echo $todo["title"]?>  <input type="checkbox"></li>
                     <?php } ?>      
-                            
+<!--Suppression d'une tache-->   
                         <form action="" method="POST">
                                 <input type="hidden" name="idTodo" value="<?= $todo['id'] ?>" />
                                 <input type="hidden" name="type" value="suppression" />
