@@ -21,3 +21,13 @@ function addTodo($title, $todolistId)
     $stmt->bindValue(":todo_list_id", $todolistId, PDO::PARAM_INT);
     return $stmt->execute();
 } 
+
+function deleteTodo($id)
+{
+    var_dump($id);
+    $dbh = getConnexion();
+    $req = "DELETE FROM todo WHERE id = :id";
+    $stmt= $dbh->prepare($req);
+    $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+    return $stmt->execute();
+}

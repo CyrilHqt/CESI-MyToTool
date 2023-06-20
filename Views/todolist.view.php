@@ -6,9 +6,15 @@ require 'request/todo.dao.php';
     $todos = listTodo ($_GET['id']);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $title = htmlspecialchars($_POST['title']);
-            $result = addTodo($title, $_GET['id']);
-            header('Location: index.php?page=todolist&id='.$_GET['id']);
+            if ($_POST["type"]=== "ajout"){
+                $title = htmlspecialchars($_POST['title']);
+                $result = addTodo($title, $_GET['id']);
+                header('Location: index.php?page=todolist&id='.$_GET['id']);   
+            }
+            elseif ($_POST["type"]=== "suppression") {
+                $result = deleteTodo($_POST['idTodo']);
+                header('Location: index.php?page=todolist&id='.$_GET['id']);   
+            }
         }
     ?>
 
@@ -27,16 +33,27 @@ require 'request/todo.dao.php';
     <div id="task-container">
         <div class="original-container">
         <form method="post">
+            <input type="hidden" name="type" value="ajout" />
             <input name="title" type="text" id="task-input" placeholder="Ajouter une tâche">
             <button id="add-task-btn">Ajouter</button>
+        </form>
             <ul id="task-list">
                 <?php foreach($todos as $todo) { ?>
                     <?php if ($todo['is_done']) { ?>
                     <li><?php echo $todo["title"]?>  <input type="checkbox" checked></li>
                     <?php } else { ?>
                     <li><?php echo $todo["title"]?>  <input type="checkbox"></li>
-                    <?php } ?>                <?php } ?>
+                    <?php } ?>      
+                            
+                        <form action="" method="POST">
+                                <input type="hidden" name="idTodo" value="<?= $todo['id'] ?>" />
+                                <input type="hidden" name="type" value="suppression" />
+                                <input type="submit" value="Supprimer" class="btn btn-outline-danger" />
+                        </form>
+
+                    <?php } ?>
             </ul>
+
         </div>
 
     </div>

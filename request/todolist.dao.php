@@ -34,3 +34,12 @@ function getOne($id)
     $stmt->execute();
     return $stmt->fetch();
 }
+
+function deleteList($id)
+{
+    $dbh = getConnexion();
+    $req = "DELETE FROM todo_list WHERE id = :id";
+    $stmt= $dbh->prepare($req);
+    $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+    return $stmt->execute();
+}
