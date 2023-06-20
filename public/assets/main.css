@@ -1,0 +1,8 @@
+.p_invisible{
+    display:none;
+}
+
+.dark-mode {
+    background-color: rgb(59, 59, 59);
+    color: white;
+  }
