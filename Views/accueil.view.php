@@ -36,12 +36,13 @@ if (isset($_SESSION['user'])) {
             <form method="post">
                 <div class="col-md-4">
                     <div class="input-group">
-                        <input name="title" type="text" id="task-input" placeholder="Ajouter une liste de tâches">
+                        <input class="form-control" name="title" type="text" id="task-input" placeholder="Ajouter une liste de tâches">
                         <input type="hidden" name="type" value="ajout">
                         <button class="btn btn-primary" id="add-task-btn">Ajouter</button>
                     </div>
                 </div>
             </form>
+</br>
             <ul id="task-list">
                 <?php foreach ($todolists as $todolist) { ?>
                     <li>

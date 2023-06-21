@@ -54,6 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
         </form>
+</br>
         <ul id="task-list">
             <?php foreach ($todos as $todo) { ?>
                 <?php if ($todo['is_done']) { ?>
@@ -64,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <form class="modify-task-form" action="" method="POST">
                                 <input type="hidden" name="idTodo" value="<?= $todo['id'] ?>" />
                                 <input type="hidden" name="type" value="modification" />
-                                <input type="text" name="newTitle" placeholder="Modifier le titre" required />
+                                <input class="inputModif" type="text" name="newTitle" placeholder="Modifier la tâche" required />
                                 <input type="submit" value="Modifier" class="btn btn-outline-primary mx-2" />
                             </form>
                             <form action="" method="POST">
@@ -82,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <form class="modify-task-form" action="" method="POST">
                                 <input type="hidden" name="idTodo" value="<?= $todo['id'] ?>" />
                                 <input type="hidden" name="type" value="modification" />
-                                <input type="text" name="newTitle" placeholder="Modifier la tâche" required />
+                                <input class="inputModif" type="text" name="newTitle" placeholder="Modifier la tâche" required />
                                 <input type="submit" value="Modifier" class="btn btn-outline-primary mx-2" />
                             </form>
                         <!-- Suppression d'une tache -->

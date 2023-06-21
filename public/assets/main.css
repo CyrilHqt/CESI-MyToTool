@@ -6,3 +6,9 @@
     background-color: rgb(59, 59, 59);
     color: white;
   }
+
+  .inputModif{
+    margin-left: 10px;
+    border-radius: 5px;
+    border: solid 0.3px;
+  }
