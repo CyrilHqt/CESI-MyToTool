@@ -2,11 +2,18 @@
 
 <?php
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if ($_POST["type"] === "ajout") {
             $title = htmlspecialchars($_POST['title']);
             $result = addTodoList($title);
             header('Location: index.php');
-        }
-    ?>
+            exit;
+        }  elseif ($_POST["type"] === "suppression") {
+            $result = deleteList($_POST['idTodolist']);
+            header('Location: index.php');
+            exit;
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -28,8 +35,9 @@
         <div class="original-container">
         <form method="post">
             <input name="title" type="text" id="task-input" placeholder="Ajouter une liste de tâches">
+            <input type="hidden" name="type" value="ajout">
             <button id="add-task-btn">Ajouter</button>
-        <form>
+        </form>
             <ul id="task-list">
                 <?php foreach($todolists as $todolist) { ?>
                     <li>
