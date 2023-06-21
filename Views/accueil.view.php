@@ -45,7 +45,7 @@ if (isset($_SESSION['user'])) {
 </br>
             <ul id="task-list">
                 <?php foreach ($todolists as $todolist) { ?>
-                    <li>
+                    <li class="listes">
                         <div class="task-item">
                             <a class="btn btn-success" href="index.php?page=todolist&id=<?php echo $todolist['id'] ?>"><?php echo $todolist["title"] ?></a>
                             <!--Suppression de la liste-->

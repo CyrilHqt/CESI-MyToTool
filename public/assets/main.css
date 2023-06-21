@@ -12,3 +12,11 @@
     border-radius: 5px;
     border: solid 0.3px;
   }
+
+  .listes {
+    padding-bottom: 10px;
+  }
+
+  .todos {
+    padding-bottom: 5px;
+  }

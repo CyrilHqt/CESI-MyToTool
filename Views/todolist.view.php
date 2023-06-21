@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <ul id="task-list">
             <?php foreach ($todos as $todo) { ?>
                 <?php if ($todo['is_done']) { ?>
-                    <li>
+                    <li class="todos">
                         <div class="d-flex align-items-center">
                             <span class="task-title"><?php echo $todo["title"] ?></span>
                             <input type="checkbox" checked>
@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </li>
                 <?php } else { ?>
-                    <li>
+                    <li class="todos">
                         <div class="d-flex align-items-center">
                             <span class="task-title"><?php echo $todo["title"] ?></span>
                             <input type="checkbox">
