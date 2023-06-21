@@ -1,16 +1,16 @@
 <?php require 'request/todolist.dao.php'; ?>
 
 <?php
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if ($_POST["type"] === "ajout") {
-            $title = htmlspecialchars($_POST['title']);
-            $result = addTodoList($title);
-            header('Location: index.php');
-            exit;
-        }  elseif ($_POST["type"] === "suppression") {
-            $result = deleteList($_POST['idTodolist']);
-            header('Location: index.php');
-            exit;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_POST["type"] === "ajout") {
+        $title = htmlspecialchars($_POST['title']);
+        $result = addTodoList($title);
+        header('Location: index.php');
+        exit;
+    } elseif ($_POST["type"] === "suppression") {
+        $result = deleteList($_POST['idTodolist']);
+        header('Location: index.php');
+        exit;
     }
 }
 ?>
@@ -27,48 +27,63 @@
 </head>
 <body>
 <?php 
-    if (isset($_SESSION['user'])){
-        $todolists = getList();
+if (isset($_SESSION['user'])) {
+    $todolists = getList();
     ?>
-<!--Ajout de la liste-->
+    <!--Ajout de la liste-->
     <div id="task-container">
         <div class="original-container">
-        <form method="post">
-            <input name="title" type="text" id="task-input" placeholder="Ajouter une liste de tâches">
-            <input type="hidden" name="type" value="ajout">
-            <button id="add-task-btn">Ajouter</button>
-        </form>
+            <form method="post">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input name="title" type="text" id="task-input" placeholder="Ajouter une liste de tâches">
+                        <input type="hidden" name="type" value="ajout">
+                        <button class="btn btn-primary" id="add-task-btn">Ajouter</button>
+                    </div>
+                </div>
+            </form>
             <ul id="task-list">
-                <?php foreach($todolists as $todolist) { ?>
+                <?php foreach ($todolists as $todolist) { ?>
                     <li>
-                    <a href="index.php?page=todolist&id=<?php echo $todolist['id']?>" ><?php echo $todolist["title"]?></a>
-                    </li>
-<!--Suppression de la liste-->
-                        <form action="" method="POST">
+                        <div class="task-item">
+                            <a class="btn btn-success" href="index.php?page=todolist&id=<?php echo $todolist['id'] ?>"><?php echo $todolist["title"] ?></a>
+                            <!--Suppression de la liste-->
+                            <form action="" method="POST">
                                 <input type="hidden" name="idTodolist" value="<?= $todolist['id'] ?>" />
                                 <input type="hidden" name="type" value="suppression" />
                                 <input type="submit" value="Supprimer" class="btn btn-outline-danger" />
-                        </form>
-
-                    <?php } ?>
+                            </form>
+                        </div>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
-
     </div>
-    <?php } else { ?>
-        <h4>Bienvenu sur MyToTool.</h4>
-        <p><a href="index.php?page=login">Connectez-vous</a> pour utiliser l'app !</p>
-        <?php } ?>
-    <?php
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $task = $_POST['task'];
-            header('Content-Type: application/json');
-            echo json_encode(['success' => true]);
-            exit;
-        }
-    ?>
-        
-    <script src="public\assets\script.js"></script>
+<?php } else { ?>
+    <h4>Bienvenue sur MyToTool.</h4>
+    <p><a class="btn btn-primary" href="index.php?page=login">Connectez-vous</a> pour utiliser l'app !</p>
+<?php } ?>
 
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $task = $_POST['task'];
+    header('Content-Type: application/json');
+    echo json_encode(['success' => true]);
+    exit;
+}
+?>
+
+<style>
+    .task-item {
+        display: flex;
+        align-items: center;
+    }
+
+    .task-item form {
+        margin-left: 10px;
+    }
+</style>
+
+<script src="public\assets\script.js"></script>
 </body>
 </html>

@@ -35,7 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>MyToTool</title>
 </head>
 <body>
-
 <!-- Modification d'une tache -->
 <div id="task-container">
     <div class="original-container">
@@ -44,46 +43,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 
 <!-- Ajout d'une tache -->
-<div id="task-container">
+<div class="row" id="task-container">
     <div class="original-container">
         <form method="post">
-            <input type="hidden" name="type" value="ajout" />
-            <input name="title" type="text" id="task-input" placeholder="Ajouter une tâche">
-            <button id="add-task-btn">Ajouter</button>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <input type="hidden" name="type" value="ajout"/>
+                    <input class="form-control" name="title" type="text" id="task-input" placeholder="Ajouter une tâche">
+                    <button class="btn btn-primary" id="add-task-btn">Ajouter</button>
+                </div>
+            </div>
         </form>
         <ul id="task-list">
-            <?php foreach($todos as $todo) { ?>
+            <?php foreach ($todos as $todo) { ?>
                 <?php if ($todo['is_done']) { ?>
                     <li>
-                        <span class="task-title"><?php echo $todo["title"]?></span>
-                        <input type="checkbox" checked>
-                        <button class="modify-task-btn">Modifier</button>
-                        <form class="modify-task-form" action="" method="POST">
-                            <input type="hidden" name="idTodo" value="<?= $todo['id'] ?>" />
-                            <input type="hidden" name="type" value="modification" />
-                            <input type="text" name="newTitle" placeholder="Modifier le titre" required />
-                            <input type="submit" value="Valider" class="btn btn-outline-primary" />
-                        </form>
+                        <div class="d-flex align-items-center">
+                            <span class="task-title"><?php echo $todo["title"] ?></span>
+                            <input type="checkbox" checked>
+                            <form class="modify-task-form" action="" method="POST">
+                                <input type="hidden" name="idTodo" value="<?= $todo['id'] ?>" />
+                                <input type="hidden" name="type" value="modification" />
+                                <input type="text" name="newTitle" placeholder="Modifier le titre" required />
+                                <input type="submit" value="Modifier" class="btn btn-outline-primary mx-2" />
+                            </form>
+                            <form action="" method="POST">
+                                <input type="hidden" name="idTodo" value="<?= $todo['id'] ?>" />
+                                <input type="hidden" name="type" value="suppression" />
+                                <input type="submit" value="Supprimer" class="btn btn-outline-danger" />
+                            </form>
+                        </div>
                     </li>
                 <?php } else { ?>
                     <li>
-                        <span class="task-title"><?php echo $todo["title"]?></span>
-                        <input type="checkbox">
-                        <button class="modify-task-btn">Modifier</button>
-                        <form class="modify-task-form" action="" method="POST">
-                            <input type="hidden" name="idTodo" value="<?= $todo['id'] ?>" />
-                            <input type="hidden" name="type" value="modification" />
-                            <input type="text" name="newTitle" placeholder="Modifier le titre" required />
-                            <input type="submit" value="Valider" class="btn btn-outline-primary" />
-                        </form>
+                        <div class="d-flex align-items-center">
+                            <span class="task-title"><?php echo $todo["title"] ?></span>
+                            <input type="checkbox">
+                            <form class="modify-task-form" action="" method="POST">
+                                <input type="hidden" name="idTodo" value="<?= $todo['id'] ?>" />
+                                <input type="hidden" name="type" value="modification" />
+                                <input type="text" name="newTitle" placeholder="Modifier la tâche" required />
+                                <input type="submit" value="Modifier" class="btn btn-outline-primary mx-2" />
+                            </form>
+                        <!-- Suppression d'une tache -->
+                            <form action="" method="POST">
+                                <input type="hidden" name="idTodo" value="<?= $todo['id'] ?>" />
+                                <input type="hidden" name="type" value="suppression" />
+                                <input type="submit" value="Supprimer" class="btn btn-outline-danger" />
+                            </form>
+                        </div>
                     </li>
                 <?php } ?>
-                <!-- Suppression d'une tache -->   
-                <form action="" method="POST">
-                    <input type="hidden" name="idTodo" value="<?= $todo['id'] ?>" />
-                    <input type="hidden" name="type" value="suppression" />
-                    <input type="submit" value="Supprimer" class="btn btn-outline-danger" />
-                </form>
             <?php } ?>
         </ul>
     </div>

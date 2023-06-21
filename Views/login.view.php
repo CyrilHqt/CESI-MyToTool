@@ -1,8 +1,10 @@
 <?php require 'request/auth.dao.php';
-if (isset($_SESSION['user'])){
+
+if (isset($_SESSION['user'])) {
     header('Location: index.php');
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,15 +17,15 @@ if (isset($_SESSION['user'])){
 </head>
 <body>
 
-    <div class="container">
+    <div class="form-group">
         <form method="post">
             <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Entrer email" name="email" required>
+            <input class="form-control" type="text" placeholder="Entrer email" name="email" required>
 
             <label for="password"><b>Mot de passe</b></label>
-            <input type="password" placeholder="Entrer mot de passe" name="password" required>
+            <input class="form-control" type="password" placeholder="Entrer mot de passe" name="password" required>
 
-            <button type="submit">Se connecter</button>
+            <button class="btn btn-primary" type="submit">Se connecter</button>
         </form>
     </div> 
 

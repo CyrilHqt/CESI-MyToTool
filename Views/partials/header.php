@@ -4,7 +4,7 @@
       <img src="public/Assets/images/MyToToolLogo" width="40" alt="Logo de MyToTool" />
       <span class="ms-5 fs-4">MyToTool</span>
     </a>
-    <button onclick="dark()">Dark mode</button>
+
     <?php require_once("views/partials/menu.php"); ?>
   </header>
 </div>
