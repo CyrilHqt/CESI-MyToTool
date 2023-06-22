@@ -25,55 +25,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="public\assets\main.css">
     <title>MyToTool</title>
 </head>
-<body>
-<?php 
-if (isset($_SESSION['user'])) {
-    $todolists = getList();
-    ?>
-    <!--Ajout de la liste-->
-    <div id="task-container">
-        <div class="original-container">
-            <form method="post">
-                <div class="col-md-4">
-                    <div class="input-group">
-                        <input class="form-control" name="title" type="text" id="task-input" placeholder="Ajouter une liste de tâches">
-                        <input type="hidden" name="type" value="ajout">
-                        <button class="btn btn-primary" id="add-task-btn">Ajouter</button>
-                    </div>
-                </div>
-            </form>
-</br>
-            <ul id="task-list">
-                <?php foreach ($todolists as $todolist) { ?>
-                    <li>
-                        <div class="task-item">
-                            <a class="btn btn-success" href="index.php?page=todolist&id=<?php echo $todolist['id'] ?>"><?php echo $todolist["title"] ?></a>
-                            <!--Suppression de la liste-->
-                            <form action="" method="POST">
-                                <input type="hidden" name="idTodolist" value="<?= $todolist['id'] ?>" />
-                                <input type="hidden" name="type" value="suppression" />
-                                <input type="submit" value="Supprimer" class="btn btn-outline-danger" />
-                            </form>
+<body  style="height: 100vh">
+    <main class="main h-100vh">
+        <?php 
+        if (isset($_SESSION['user'])) {
+            $todolists = getList();
+            ?>
+            <!--Ajout de la liste-->
+            <div id="task-container">
+                <div class="original-container">
+                    <form method="post">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input class="form-control" name="title" type="text" id="task-input" placeholder="Ajouter une liste de tâches">
+                                <input type="hidden" name="type" value="ajout">
+                                <button class="btn btn-primary" id="add-task-btn">Ajouter</button>
+                            </div>
                         </div>
-                    </li>
-                <?php } ?>
-            </ul>
-        </div>
-    </div>
-<?php } else { ?>
-    <h4>Bienvenue sur MyToTool.</h4>
-    <p><a class="btn btn-primary" href="index.php?page=login">Connectez-vous</a> pour utiliser l'app !</p>
-<?php } ?>
+                    </form>
+        </br>
+                    <ul id="task-list">
+                        <?php foreach ($todolists as $todolist) { ?>
+                            <li>
+                                <div class="task-item">
+                                    <a class="btn btn-success" href="index.php?page=todolist&id=<?php echo $todolist['id'] ?>"><?php echo $todolist["title"] ?></a>
+                                    <!--Suppression de la liste-->
+                                    <form action="" method="POST">
+                                        <input type="hidden" name="idTodolist" value="<?= $todolist['id'] ?>" />
+                                        <input type="hidden" name="type" value="suppression" />
+                                        <input type="submit" value="Supprimer" class="btn btn-outline-danger" />
+                                    </form>
+                                </div>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </div>
+        <?php } else { ?>
+            <h4>Bienvenue sur MyToTool.</h4>
+            <p><a class="btn btn-primary" href="index.php?page=login">Connectez-vous</a> pour utiliser l'app !</p>
+        <?php } ?>
 
-<?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $task = $_POST['task'];
-    header('Content-Type: application/json');
-    echo json_encode(['success' => true]);
-    exit;
-}
-?>
-
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $task = $_POST['task'];
+            header('Content-Type: application/json');
+            echo json_encode(['success' => true]);
+            exit;
+        }
+        ?>
+    </main>
 <style>
     .task-item {
         display: flex;

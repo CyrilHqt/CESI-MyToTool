@@ -15,8 +15,8 @@ if (isset($_SESSION['user'])) {
     <link rel="stylesheet" href="public\assets\main.css">
     <title><?php $page_title ?></title>
 </head>
-<body>
-
+<body class="mh-100">
+<main class="main">
     <div class="form-group">
         <form method="post">
             <label for="email"><b>Email</b></label>
@@ -37,7 +37,7 @@ if (isset($_SESSION['user'])) {
             exit;
         }
     ?>
-        
+</main>       
     <script src="public\assets\script.js"></script>
 
 </body>

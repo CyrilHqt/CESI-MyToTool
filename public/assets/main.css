@@ -1,9 +1,13 @@
+.main{
+  margin-top: 40px;
+}
+
 .p_invisible{
     display:none;
 }
 
 .dark-mode {
-    background-color: rgb(59, 59, 59);
+    background-color: #1111;
     color: white;
   }
 
@@ -12,3 +16,9 @@
     border-radius: 5px;
     border: solid 0.3px;
   }
+
+  /* #footer {
+    position:absolute;
+    bottom:0;
+ }
+  */
