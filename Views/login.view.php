@@ -18,6 +18,9 @@ if (isset($_SESSION['user'])) {
 <body class="mh-100">
 <main class="main">
     <div class="form-group">
+        <?php if (isset($_SESSION['Error'])){
+            echo $_SESSION["Error"];
+        } ?>
         <form method="post">
             <label for="email"><b>Email</b></label>
             <input class="form-control" type="text" placeholder="Entrer email" name="email" required>

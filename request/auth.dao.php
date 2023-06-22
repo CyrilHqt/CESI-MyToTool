@@ -14,17 +14,14 @@ function login($email, $password)
 
     if(empty($get_result))
     {
-        echo "Utilisateur non valide";
+        header('Location: index.php?page=login');
+        $_SESSION['Error'] = "Utilisateur ou Mot de passe incorrectnon";
     }   
     else
     {
         if(password_verify($password, $get_result["password"])){
             $_SESSION['user'] = $get_result;
             header('Location: index.php');
-            echo "Utilisateur valide";
-        }
-        else {
-            echo "Mot de passe incorrect";
         }
     }
     return $get_result;
